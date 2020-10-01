@@ -74,7 +74,7 @@ CREATE TABLE CROP (
     name VARCHAR2 (255) NOT NULL,
     count NUMBER (10) NOT NULL CHECK(count >= 5),
     vegetation_period NUMBER (5) NOT NULL,
-    harvesting_period DATE NOT NULL CHECK(extract(month from harvesting_period) <= 9),
+    harvesting_period NUMBER (5) NOT NULL CHECK(harvesting_period <= 9),
     Area_id INTEGER NOT NULL,
     CONSTRAINT crop_area_fk FOREIGN KEY (Area_id) REFERENCES AREA (id)
     ON DELETE CASCADE,
@@ -191,9 +191,9 @@ INSERT ALL
 SELECT * FROM dual;
 
 INSERT ALL
- INTO CROP (id, name, count, vegetation_period, harvesting_period, Area_id, Irrigation_Data_id) VALUES (1, 'Помидор', 50, 100, TO_DATE('2003/04/09 21:02:44', 'yyyy/mm/dd hh24:mi:ss'),  1, 1)
- INTO CROP (id, name, count, vegetation_period, harvesting_period, Area_id, Irrigation_Data_id) VALUES (2, 'Тыква', 100, 110, TO_DATE('2003/05/03 21:02:44', 'yyyy/mm/dd hh24:mi:ss'),  1, 2)
- INTO CROP (id, name, count, vegetation_period, harvesting_period, Area_id, Irrigation_Data_id) VALUES (3, 'Арбуз', 70, 105, TO_DATE('2003/05/15 21:02:44', 'yyyy/mm/dd hh24:mi:ss'),  1, 3)
+ INTO CROP (id, name, count, vegetation_period, harvesting_period, Area_id, Irrigation_Data_id) VALUES (1, 'Помидор', 50, 100, 6,  1, 1)
+ INTO CROP (id, name, count, vegetation_period, harvesting_period, Area_id, Irrigation_Data_id) VALUES (2, 'Тыква', 100, 110, 4,  1, 2)
+ INTO CROP (id, name, count, vegetation_period, harvesting_period, Area_id, Irrigation_Data_id) VALUES (3, 'Арбуз', 70, 105, 5,  1, 3)
 SELECT * FROM dual;
 
 INSERT ALL
